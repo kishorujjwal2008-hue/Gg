@@ -1,0 +1,663 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffe5ef">
+<title>Happy Birthday dii 💗</title>
+
+<style>
+:root {
+  --pink: #ed80a9;
+  --deep: #b83e72;
+  --light: #fff0f6;
+  --cream: #fffaf5;
+  --text: #78364f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  background: linear-gradient(140deg, #fff1f7, #ffe0ed, #fff8ed);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+button { font-family: inherit; }
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 85px 18px 35px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.screen.active {
+  display: flex;
+  animation: reveal .85s ease both;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  line-height: 1.15;
+  color: var(--deep);
+  margin: 15px 0;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 6vw, 2.7rem);
+  color: var(--deep);
+  margin: 12px 0;
+}
+
+p {
+  font-size: 1.08rem;
+  line-height: 1.85;
+  max-width: 590px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: .75rem;
+  color: #aa5b7a;
+}
+
+.hero {
+  background:
+    radial-gradient(ellipse at top, #ffffffd9, transparent 55%),
+    linear-gradient(150deg, #ffe6ef, #fff3f3 60%, #ffe4d7);
+}
+
+.flower {
+  font-size: 3.8rem;
+  animation: sway 3s ease-in-out infinite;
+  filter: drop-shadow(0 5px 8px #e9a4bd55);
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg) translateY(0); }
+  50% { transform: rotate(5deg) translateY(-8px); }
+}
+
+.btn {
+  background: linear-gradient(135deg, #ed91b4, #d9578a);
+  color: white;
+  border: none;
+  border-radius: 40px;
+  padding: 14px 23px;
+  margin: 8px 5px;
+  font-size: 1rem;
+  box-shadow: 0 6px 18px #c85c8730;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 22px #c85c8745;
+}
+
+.btn:focus-visible {
+  outline: 3px solid #a83465;
+  outline-offset: 3px;
+}
+
+.btn.secondary {
+  background: #fffaf5;
+  color: var(--deep);
+  border: 1px solid #edb5c9;
+}
+
+.music-control {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 20;
+  border: 1px solid #f0bfd1;
+  background: #fffaf2ee;
+  color: var(--deep);
+  border-radius: 25px;
+  padding: 11px 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px #b34d7420;
+}
+
+.music-note {
+  font-size: .8rem;
+  opacity: .8;
+}
+
+#garden {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.petal {
+  position: absolute;
+  top: -35px;
+  animation: fall linear forwards;
+  opacity: .8;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(600deg); opacity: 0; }
+}
+
+.corner {
+  position: absolute;
+  font-size: 2rem;
+  opacity: .55;
+}
+
+.top-left { top: 75px; left: 15px; }
+.top-right { top: 75px; right: 15px; }
+
+.divider {
+  width: 90px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e5a1bb, transparent);
+  margin: 15px auto;
+}
+
+.hint {
+  font-size: .85rem;
+  opacity: .75;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 650px;
+  margin: 18px auto;
+}
+
+.frame {
+  position: relative;
+  background: #fffdf8;
+  padding: 8px 8px 12px;
+  border-radius: 7px;
+  box-shadow: 0 5px 20px #9c52751c;
+  transform: rotate(-1.5deg);
+}
+
+.frame:nth-child(even) { transform: rotate(1.5deg); }
+
+.frame img {
+  display: block;
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 4px;
+  background: linear-gradient(145deg, #ffe0ed, #fff3d9);
+}
+
+.photo-placeholder {
+  display: flex;
+  height: 170px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(145deg, #ffe3ef, #fff5e9);
+  border-radius: 4px;
+  color: #b45d7e;
+}
+
+.photo-placeholder span { font-size: 2rem; }
+.photo-placeholder small { font-size: .8rem; }
+
+.frame figcaption {
+  font-size: .9rem;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+.letter {
+  width: 100%;
+  max-width: 600px;
+  padding: 27px 23px;
+  border: 1px solid #efbfd0;
+  border-radius: 18px;
+  background: #fffaf4f2;
+  box-shadow: 0 10px 35px #9d53721c;
+  text-align: left;
+}
+
+.letter .salutation,
+.letter .signature { text-align: center; }
+
+.letter p { font-size: 1.04rem; }
+
+.signature {
+  font-size: 1.25rem;
+  color: var(--deep);
+  line-height: 1.8;
+}
+
+.big-cake {
+  font-size: clamp(5rem, 20vw, 8rem);
+  filter: drop-shadow(0 8px 12px #c15b8030);
+  animation: cake 2s ease-in-out infinite;
+}
+
+@keyframes cake {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+.final-card {
+  width: 100%;
+  max-width: 570px;
+  padding: 28px 18px;
+  border-radius: 25px;
+  border: 1px solid #f1c1d0;
+  background: #ffffffb8;
+  box-shadow: 0 10px 35px #ad4e7520;
+}
+
+footer {
+  margin-top: 24px;
+  font-size: .82rem;
+  opacity: .7;
+}
+
+@media (max-width: 390px) {
+  .screen { padding-left: 13px; padding-right: 13px; }
+  .gallery { gap: 9px; }
+  .frame { padding: 6px 6px 10px; }
+  .frame img, .photo-placeholder { height: 135px; }
+  .letter { padding: 20px 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="garden" aria-hidden="true"></div>
+
+<button class="music-control" id="musicButton"
+        onclick="toggleMusic()" aria-pressed="false">
+  ♫ Play Music
+</button>
+
+<!-- Put your own soft piano MP3 in the same folder as this HTML file. -->
+<audio id="birthdayMusic" src="music.mp3" loop preload="none"></audio>
+
+<!-- LAYER 1: THE INVITATION -->
+<section class="screen active hero" id="page1">
+  <span class="corner top-left">🌸</span>
+  <span class="corner top-right">🦋</span>
+
+  <div class="flower">🌷</div>
+  <p class="eyebrow">A little world made just for you</p>
+
+  <h1>Happy Birthday,<br>dii 💗</h1>
+
+  <div class="divider"></div>
+
+  <p>
+    To my sweetest big sister,<br>
+    my forever special person,<br>
+    my one and only <strong>Paanduu</strong> 🎀
+  </p>
+
+  <p class="hint">
+    I've made something special for you...
+  </p>
+
+  <button class="btn" onclick="goTo(2)">
+    Open your surprise 💌
+  </button>
+
+  <footer>Made with all my love, just for you 🌸</footer>
+</section>
+
+
+<!-- LAYER 2: EIGHT PHOTO MEMORIES -->
+<section class="screen" id="page2">
+  <span class="corner top-left">🌼</span>
+  <span class="corner top-right">🌸</span>
+
+  <p class="eyebrow">A little collection of us</p>
+  <h2>Our Little Memories 📸</h2>
+
+  <p>
+    Some moments become memories.<br>
+    Some people make those memories precious.<br>
+    For me, you're one of those people, Paanduu. 💗
+  </p>
+
+  <div class="gallery">
+
+    <figure class="frame">
+      <img src="photo1.jpg" alt="Memory one"
+           onerror="this.style.display='none'">
+      <div class="photo-placeholder">
+        <span>🌷</span><small>Add photo 1</small>
+      </div>
+      <figcaption>My favourite person 💕</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="photo2.jpg" alt="Memory two"
+           onerror="this.style.display='none'">
+      <div class="photo-placeholder">
+        <span>🦋</span><small>Add photo 2</small>
+      </div>
+      <figcaption>A memory to keep forever ✨</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="photo3.jpg" alt="Memory three"
+           onerror="this.style.display='none'">
+      <div class="photo-placeholder">
+        <span>🌸</span><small>Add photo 3</small>
+      </div>
+      <figcaption>Smiles made more special 💗</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="photo4.jpg" alt="Memory four"
+           onerror="this.style.display='none'">
+      <div class="photo-placeholder">
+        <span>🎀</span><small>Add photo 4</small>
+      </div>
+      <figcaption>My forever Paanduu 🥹</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="photo5.jpg" alt="Memory five"
+           onerror="this.style.display='none'">
+      <div class="photo-placeholder">
+        <span>🌹</span><small>Add photo 5</small>
+      </div>
+      <figcaption>Little moments, big love ❤️</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="photo6.jpg" alt="Memory six"
+           onerror="this.style.display='none'">
+      <div class="photo-placeholder">
+        <span>🌻</span><small>Add photo 6</small>
+      </div>
+      <figcaption>Always a special memory 💌</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="photo7.jpg" alt="Memory seven"
+           onerror="this.style.display='none'">
+      <div class="photo-placeholder">
+        <span>🌺</span><small>Add photo 7</small>
+      </div>
+      <figcaption>Lucky to have you 🌷</figcaption>
+    </figure>
+
+    <figure class="frame">
+      <img src="photo8.jpg" alt="Memory eight"
+           onerror="this.style.display='none'">
+      <div class="photo-placeholder">
+        <span>💐</span><small>Add photo 8</small>
+      </div>
+      <figcaption>Us, today and always 💖</figcaption>
+    </figure>
+
+  </div>
+
+  <p class="hint">
+    Replace the placeholders with your real photos to make this yours.
+  </p>
+
+  <button class="btn secondary" onclick="goTo(1)">← Go back</button>
+  <button class="btn" onclick="goTo(3)">A letter for you 💌</button>
+</section>
+
+
+<!-- LAYER 3: THE HEARTFELT LETTER -->
+<section class="screen" id="page3">
+  <span class="corner top-left">🌸</span>
+  <span class="corner top-right">🦋</span>
+
+  <div class="flower">💌</div>
+  <p class="eyebrow">From my heart to yours</p>
+  <h2>Dear Paanduu...</h2>
+
+  <article class="letter">
+    <p class="salutation"><strong>My dearest Khushi, ❤️</strong></p>
+
+    <p>
+      Happy Birthday to my beautiful big sister!
+      🌷
+    </p>
+
+    <p>
+      Sometimes, I wonder if you truly know how
+      special you are to me. I might not always
+      express my feelings perfectly, and I may not
+      say it every day, but having you as my big
+      sister is one of the sweetest parts of my life.
+    </p>
+
+    <p>
+      You're not just my sister. You're a part of my
+      childhood, my memories, my happiness, and so
+      many little moments that I'll carry with me
+      wherever life takes us.
+    </p>
+
+    <p>
+      We may laugh over silly things, tease each
+      other, or have our own little disagreements,
+      but underneath it all, you'll always hold a
+      very special place in my heart. No birthday
+      gift could ever fully explain that.
+    </p>
+
+    <p>
+      On your birthday, I wish you a life full of
+      genuine happiness, beautiful opportunities,
+      good health, peaceful days, and dreams that
+      slowly turn into reality. I hope you always
+      find reasons to smile, even on difficult days,
+      and people who remind you how wonderful you are.
+    </p>
+
+    <p>
+      Khushi, never forget how loved and valued you
+      are. I hope the world gives you the kindness
+      and happiness you deserve. And whatever changes
+      life brings, I hope we keep making memories,
+      sharing laughs, and being there for each other.
+    </p>
+
+    <p>
+      You will always be my special Didi, my
+      Paanduu, and someone I'll be grateful to have
+      in my life. Today is your day, so smile a
+      little extra, laugh a little louder, and let
+      yourself feel all the love surrounding you. 🥹💗
+    </p>
+
+    <p class="signature">
+      Happy Birthday, my Paanduu! 🌸<br>
+      Love you more than words can say. ❤️
+    </p>
+
+    <p class="salutation">Forever your loving sibling 🫶</p>
+  </article>
+
+  <button class="btn secondary" onclick="goTo(2)">← Our memories</button>
+  <button class="btn" onclick="goTo(4)">One last surprise 🎁</button>
+</section>
+
+
+<!-- LAYER 4: THE BIRTHDAY WISH -->
+<section class="screen hero" id="page4">
+  <span class="corner top-left">🦋</span>
+  <span class="corner top-right">🌸</span>
+
+  <div class="final-card">
+    <p class="eyebrow">Your special day</p>
+
+    <div class="big-cake">🎂</div>
+
+    <h1>Happy Birthday,<br>Paanduu! 💖</h1>
+
+    <div class="divider"></div>
+
+    <p>
+      May your life bloom like a beautiful garden,
+      may your dreams find their wings, and may your
+      heart always find little reasons to be happy.
+      🌷🦋
+    </p>
+
+    <button class="btn" onclick="makeWish()">
+      Make a birthday wish ✨
+    </button>
+
+    <p id="wishMessage" aria-live="polite"></p>
+
+    <p>
+      To the sister who makes life more special:
+      may this new chapter be your most beautiful one yet.
+    </p>
+
+    <h2>Love you, Khushi dii! 💗</h2>
+
+    <p class="hint">Your sibling, always and forever. 🌸</p>
+  </div>
+
+  <button class="btn secondary" onclick="goTo(1)">
+    ↻ Relive your surprise
+  </button>
+</section>
+
+
+<script>
+const music = document.getElementById("birthdayMusic");
+const musicButton = document.getElementById("musicButton");
+const garden = document.getElementById("garden");
+
+let musicStarted = false;
+let petalTimer;
+
+function goTo(number) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById("page" + number).classList.add("active");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  if (number === 4) {
+    showerPetals(20);
+  }
+}
+
+async function toggleMusic() {
+  if (music.paused) {
+    try {
+      await music.play();
+      musicStarted = true;
+      musicButton.textContent = "♫ Pause Music";
+      musicButton.setAttribute("aria-pressed", "true");
+    } catch (error) {
+      musicButton.textContent = "Tap to Play Again ♫";
+      alert(
+        "Please add a valid music.mp3 file beside index.html, " +
+        "then tap Play Music again."
+      );
+    }
+  } else {
+    music.pause();
+    musicButton.textContent = "♫ Play Music";
+    musicButton.setAttribute("aria-pressed", "false");
+  }
+}
+
+function createPetal() {
+  const petal = document.createElement("span");
+  petal.className = "petal";
+
+  const decorations = ["🌸", "🌷", "💗", "✨", "🦋", "🌼"];
+  petal.textContent =
+    decorations[Math.floor(Math.random() * decorations.length)];
+
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.fontSize = (14 + Math.random() * 18) + "px";
+  petal.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+  garden.appendChild(petal);
+  petal.addEventListener("animationend", () => petal.remove());
+}
+
+function showerPetals(count) {
+  for (let i = 0; i < count; i++) {
+    setTimeout(createPetal, i * 90);
+  }
+}
+
+function makeWish() {
+  document.getElementById("wishMessage").textContent =
+    "🌟 Close your eyes, make a wish, and let this new year bloom! " +
+    "Happy Birthday, my Paanduu! 💗";
+
+  showerPetals(45);
+}
+
+// Soft, occasional petals throughout the experience.
+petalTimer = setInterval(() => {
+  if (document.hidden) return;
+  if (Math.random() < 0.55) createPetal();
+}, 1400);
+
+// Replace any missing photo with its matching placeholder.
+// This also handles broken image URLs after the page loads.
+document.querySelectorAll(".frame").forEach(frame => {
+  const img = frame.querySelector("img");
+  const placeholder = frame.querySelector(".photo-placeholder");
+
+  function updatePhoto() {
+    const loaded = img.complete && img.naturalWidth > 0;
+    placeholder.style.display = loaded ? "none" : "flex";
+    img.style.display = loaded ? "block" : "none";
+  }
+
+  img.addEventListener("load", updatePhoto);
+  img.addEventListener("error", updatePhoto);
+  updatePhoto();
+});
+</script>
+
+</body>
+</html>
